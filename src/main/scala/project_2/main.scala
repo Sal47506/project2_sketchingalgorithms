@@ -159,7 +159,8 @@ object main{
 
 
   def exact_F2(x: RDD[String]): Long = {
-    x.map(x => (x, 1)).reduceByKey(_+_).map(x => x._2*x._2).reduce(_+_)
+    val ans = rdd.map(x => (x, 1)).reduceByKey(_ + _).map { case (_, count) => count * count }.reduce(_ + _)
+    return ans
   }
 
 
